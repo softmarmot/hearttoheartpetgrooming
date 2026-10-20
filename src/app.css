@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #2e2238;
+  --color-ink-soft: #5d5066;
+  --color-rose: #a8233f;
+  --color-rose-dark: #861a31;
+  --color-blush: #f9e6ea;
+  --color-cream: #fff9f3;
+  --color-sage: #e3f1ea;
+  --color-tan: #e9b87a;
+  --color-line: #f0e2dc;
+
+  --font-sans: 'Nunito Variable', system-ui, sans-serif;
+  --font-display: 'Fredoka Variable', 'Nunito Variable', sans-serif;
+
+  --radius-card: 22px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-cream font-sans text-base leading-relaxed text-ink sm:text-[17px];
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display leading-tight;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-[1160px] px-[18px] sm:px-7;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2.5 whitespace-nowrap rounded-full px-6 py-3.5 font-extrabold transition duration-150;
+  }
+  .btn-primary {
+    @apply bg-rose text-white shadow-[0_8px_20px_-8px_rgba(168,35,63,.6)] hover:-translate-y-px hover:bg-rose-dark;
+  }
+  .btn-ghost {
+    @apply border-2 border-line bg-white text-ink hover:border-rose;
+  }
+  .kicker {
+    @apply text-[13px] font-extrabold uppercase tracking-[.14em] text-rose;
+  }
+  .section-title {
+    @apply mt-2.5 mb-3 text-[34px] font-semibold sm:text-[44px];
+  }
+  .social-link {
+    @apply grid size-[42px] place-items-center rounded-full bg-blush text-lg text-rose transition-colors hover:bg-rose hover:text-white;
+  }
+}
