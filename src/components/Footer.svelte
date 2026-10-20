@@ -13,6 +13,9 @@
       <div>{site.street}, {site.city}<br /><a href={site.phoneHref}>{site.phone}</a></div>
     </div>
     <Social />
-    <div>© {year} {site.name}<br />Website by SoftMarmot</div>
+    <div>
+      © {year} {site.name}<br />
+      Developed by <a class="font-bold text-rose hover:underline" href="https://softmarmot.com" target="_blank" rel="noopener">SoftMarmot</a>
+    </div>
   </div>
 </footer>
