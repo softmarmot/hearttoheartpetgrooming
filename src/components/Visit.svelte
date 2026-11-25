@@ -1,7 +1,6 @@
 <script>
-  import { site } from '../lib/site.js';
+  import { site, directionsHref, mapEmbedSrc } from '../lib/site.js';
   import Social from './Social.svelte';
-  import MapArt from './art/MapArt.svelte';
 
   const hasSocial = Boolean(site.facebook || site.instagram);
 </script>
@@ -17,7 +16,9 @@
         <h3 class="mb-[18px] text-2xl font-semibold">{site.name}</h3>
         <div class="flex gap-3.5 border-b border-dashed border-line py-3.5">
           <i class="fa-solid fa-location-dot mt-1 w-[22px] text-center text-xl text-rose" aria-hidden="true"></i>
-          <div><strong class="block">{site.street}</strong><small class="text-[15px] text-ink-soft">{site.city}</small></div>
+          <a class="block hover:underline" href={directionsHref} target="_blank" rel="noopener" aria-label="Get directions to {site.street}, {site.city}">
+            <strong class="block">{site.street}</strong><small class="text-[15px] text-ink-soft">{site.city}</small>
+          </a>
         </div>
         <div class="flex gap-3.5 border-b border-dashed border-line py-3.5">
           <i class="fa-solid fa-phone mt-1 w-[22px] text-center text-xl text-rose" aria-hidden="true"></i>
@@ -46,20 +47,21 @@
           <a class="btn btn-primary justify-center max-sm:flex-[1_1_100%]" href={site.phoneHref}>
             <i class="fa-solid fa-phone" aria-hidden="true"></i>Call now
           </a>
-          <a class="btn btn-ghost justify-center max-sm:flex-[1_1_100%]" href={site.directionsHref} target="_blank" rel="noopener">
+          <a class="btn btn-ghost justify-center max-sm:flex-[1_1_100%]" href={directionsHref} target="_blank" rel="noopener">
             <i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i>Get directions
           </a>
         </div>
       </div>
-      <a
-        class="relative block min-h-[260px] overflow-hidden rounded-card border border-line bg-sage sm:min-h-[360px]"
-        href={site.directionsHref}
-        target="_blank"
-        rel="noopener"
-        aria-label="Open {site.street}, {site.city} in Google Maps"
-      >
-        <MapArt />
-      </a>
+      <div class="relative min-h-[260px] overflow-hidden rounded-card border border-line bg-sage sm:min-h-[360px]">
+        <iframe
+          class="absolute inset-0 h-full w-full border-0"
+          src={mapEmbedSrc}
+          title="Map showing {site.name} at {site.street}, {site.city}"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   </div>
 </section>

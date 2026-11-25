@@ -1,5 +1,5 @@
 <script>
-  import { site } from '../lib/site.js';
+  import { site, directionsHref } from '../lib/site.js';
   import DogArt from './art/DogArt.svelte';
 </script>
 
@@ -32,9 +32,9 @@
         <span class="inline-flex items-center gap-2">
           <i class="fa-solid fa-clock text-rose" aria-hidden="true"></i>{site.hoursShort}
         </span>
-        <span class="inline-flex items-center gap-2">
+        <a class="inline-flex items-center gap-2 hover:underline" href={directionsHref} target="_blank" rel="noopener">
           <i class="fa-solid fa-location-dot text-rose" aria-hidden="true"></i>{site.street}, Parma
-        </span>
+        </a>
       </div>
     </div>
     <div class="mx-auto w-full max-w-[230px] max-lg:-order-1 sm:max-w-[460px] lg:max-w-none">
