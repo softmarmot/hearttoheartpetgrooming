@@ -1,6 +1,6 @@
 <script>
   import logo from '../lib/assets/logo.png';
-  import { site } from '../lib/site.js';
+  import { site, directionsHref } from '../lib/site.js';
   import Social from './Social.svelte';
 
   const year = new Date().getFullYear();
@@ -10,7 +10,7 @@
   <div class="wrap flex flex-wrap justify-between gap-5 max-sm:flex-col sm:items-center">
     <div class="flex items-center gap-4">
       <img class="h-16 w-auto" src={logo} alt="" />
-      <div>{site.street}, {site.city}<br /><a href={site.phoneHref}>{site.phone}</a></div>
+      <div><a class="hover:underline" href={directionsHref} target="_blank" rel="noopener">{site.street}, {site.city}</a><br /><a href={site.phoneHref}>{site.phone}</a></div>
     </div>
     <Social />
     <div>

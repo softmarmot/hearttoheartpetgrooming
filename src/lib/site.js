@@ -7,8 +7,8 @@ export const site = {
   street: '5570 Ridge Rd',
   city: 'Parma, OH 44129',
   years: 35,
-  directionsHref:
-    'https://www.google.com/maps/dir/?api=1&destination=5570+Ridge+Rd%2C+Parma%2C+OH+44129',
+  // Full address used for the embedded map and the navigation links.
+  mapQuery: 'Heart To Heart Pet Grooming, 5570 Ridge Rd, Parma, OH 44129',
   // Social page URLs are not known yet; icons are hidden until these are set.
   facebook: '',
   instagram: '',
@@ -69,3 +69,19 @@ export const reviews = [
   { text: 'Exceptional in grooming… customer friendly.', author: 'Liz L.' },
   { text: 'A genuine love for the furry friends.', author: 'Chanda C.' },
 ];
+
+const q = encodeURIComponent(site.mapQuery);
+
+// Embedded Google Map (no API key needed).
+export const mapEmbedSrc = `https://www.google.com/maps?q=${q}&z=16&output=embed`;
+
+// iPhones and iPads open Apple Maps; everything else gets the Google Maps
+// directions link, which opens the Google Maps app on Android when installed.
+const isApple =
+  typeof navigator !== 'undefined' &&
+  (/iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+
+export const directionsHref = isApple
+  ? `https://maps.apple.com/?daddr=${q}`
+  : `https://www.google.com/maps/dir/?api=1&destination=${q}`;
